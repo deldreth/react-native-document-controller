@@ -4,7 +4,12 @@
  */
 'use strict';
 
-var NativeDocumentController = require('NativeModules').DocumentController;
+var React = require('react-native');
+var {
+  NativeModules
+} = React;
+
+var NativeDocumentController = NativeModules.DocumentController;
 
 /**
  * High-level docs for the DocumentController iOS API can be written here.
