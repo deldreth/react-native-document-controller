@@ -1,6 +1,6 @@
 {
   "name": "react-native-document-controller",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React Native component for handling UIDocumentInteractionController",
   "main": "DocumentController.ios.js",
   "repository": {
