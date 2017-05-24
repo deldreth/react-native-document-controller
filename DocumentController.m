@@ -19,9 +19,13 @@ RCT_EXPORT_METHOD(show:(NSDictionary *)args)
     self.documentController = [UIDocumentInteractionController interactionControllerWithURL:file];
     self.documentController.delegate = self;
     
-    UIViewController *ctrl = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    UIViewController *topController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
     
-    if (![self.documentController presentOpenInMenuFromRect:ctrl.view.bounds inView:ctrl.view animated:YES]) {
+    while (topController.presentedViewController) {
+        topController = topController.presentedViewController;
+    }
+
+    if (![self.documentController presentOpenInMenuFromRect:topController.view.bounds inView:topController.view animated:YES]) {
         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:@"There are no installed apps that can open this file." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alertView show];
     }
